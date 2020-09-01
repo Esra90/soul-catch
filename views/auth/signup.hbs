@@ -1,0 +1,45 @@
+<div id="form">
+  <h2>Signup</h2>
+  <form action="/signup" method="POST" enctype="multipart/form-data">
+    <label for="input-username">Username</label>
+    <input type="text" name="username" id="input-username"  placeholder="Your username" />
+
+    <label for="input-email">Email</label>
+    <input type="email" name="email" id="input-email"  placeholder="Your email" />
+
+    <label for="input-password">Password</label>
+    <input type="password" name="password" id="input-password" placeholder="********" />
+
+    <label for="image-input">Image:</label>
+    <input type="file" name="profilePicture" id="image-input" class="form-control-file" />
+    <input type="text" name="existingImage" hidden id="" value="{{profilePicture}}">
+
+    <label for="genre-input">Choose your genre</label>
+    <select name = "genre" id="genre-input" multiple size = 11>   
+        <option value = "blues">Blues</option> 
+        <option value = "classical">Classical</option> 
+        <option value = "country">Country</option> 
+        <option value = "electronic">Electronic</option> 
+        <option value = "folk">Folk</option> 
+        <option value = "jazz">Jazz</option> 
+        <option value = "latin">Latin</option> 
+        <option value = "pop/Rock">Pop/Rock</option> 
+        <option value = "r&b">R&B</option> 
+        <option value = "rap">Rap</option> 
+        <option value = "reggae">Reggae</option> 
+        <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
+    </select>
+    
+
+    <button type="submit">Create account</button>
+
+
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+  </form>
+</div>
+
+
+
+ 

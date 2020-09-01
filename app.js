@@ -10,19 +10,17 @@ const logger       = require('morgan');
 const path         = require('path');
 
 
-mongoose
-  .connect('mongodb://localhost/soul-catch', {useNewUrlParser: true})
-  .then(x => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
-  })
-  .catch(err => {
-    console.error('Error connecting to mongo', err)
-  });
+// Set up the database
+require('./configs/db.config');
+
+// bind user to view - locals
+const bindUserToViewLocals = require('./configs/user-locals.config');
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
 
 const app = express();
+require('./configs/session.config')(app);
 
 // Middleware Setup
 app.use(logger('dev'));
@@ -47,12 +45,15 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'Welcome to Soul-Catch';
 
 
 
-const index = require('./routes/index');
+const index = require('./routes/index.route');
+const authRouter = require('./routes/auth.route');
 app.use('/', index);
+app.use('/', authRouter);
+
 
 
 module.exports = app;
