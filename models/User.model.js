@@ -1,5 +1,6 @@
 // const mongoose = require('mongoose');
 const { Schema, model } = require('mongoose');
+const passportLocalMongoose = require('passport-local-mongoose');
  
 const userSchema = new Schema(
   {
@@ -26,12 +27,20 @@ const userSchema = new Schema(
     },
     profilePicture: {
       type: String
-    }
+    },
+    event:[
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Event'
+      }
+    ]
   },
   {
     timestamps: true
   }
 );
+
+userSchema.plugin(passportLocalMongoose);
  
 module.exports = model('User', userSchema);
 

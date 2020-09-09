@@ -1,8 +1,68 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
   color: #00B7FF; }
 
 /*# sourceMappingURL=style.css.map */
+.landingpage {
+  background-image: url(../images/background_img.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100%;
+
+}
+
+.button {
+  height: 960px;
+}
+
+
+.form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-image: url('../images/default-backgorund.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100%;
+  
+}
+
+h2 {
+
+ padding-top: 400px;
+ margin-left: 200px;
+ text-align: center;
+ color: white;
+}
+
+.form-group{
+ width: 350px;
+ margin: 0 auto;
+ padding-top: 120px;
+ height: 950px;
+}
+
+.form-group label {
+ color: white;
+}
+
+.form-group p {
+ color: white;
+}
+
+.form-group-default {
+  width: 350px;
+  margin: 0 auto;
+  padding-top: 350px;
+  height: 950px;
+}
+
+.form-group-default label {
+  color: white;
+}

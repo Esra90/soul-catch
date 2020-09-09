@@ -4,41 +4,34 @@ const eventSchema = new Schema(
   {
     name: {
       type: String,
-      trim: true,
-      required: [true, 'Name is required.'],
+      trim: true
+      // required: [true, 'Name is required.']
     },
     description: {
       type: String
+      // required: [true, 'Description is required.']
     },
     location: {
       type: String
+      // required: [true, 'Location is required.']
     },
     eventPic: {
       type: String
     },
     datum: {
-      type: String,
-      "format": "date-time" 
-    }
-
-    // email: {
-    //   type: String,
-    //   required: [true, 'Email is required.'],
-    //   unique: true,
-    //   match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address.'],
-    //   lowercase: true,
-    //   trim: true
-    // },
-    // passwordHash: {
-    //   type: String,
-    //   required: [true, 'Password is required.']
-    // },
-    // genre : {
-    //   type: String
-    // },
-    // profilePicture: {
-    //   type: String
-    // }
+      type: Date,
+      default: Date.now()
+      // required: [true, 'Time is required.']
+      // "format": "date-time" 
+    },
+    genre: {
+      type: Array
+    },
+    owner:
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      }
   },
   {
     timestamps: true

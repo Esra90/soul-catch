@@ -1,0 +1,23 @@
+<div class="userProfile-container"></div>
+{{#if userInSession}}
+<h2>Hallo {{userInSession.username}}</h2>
+<p>Welcome to your personal page</p>
+<a href="/create-events">Add a new Event</a> <br />
+<h4>List of your own events</h4>
+
+<div>
+    {{!-- {{#each foundEvents}} --}}
+    <hr />
+    <p>Name of the Event: {{name}}</p>
+    <p>Description: {{description}}</p>
+    <p>Location: {{location}}</p>
+    <p>Datum: {{datum}}</p>
+    <p>Genre: {{genre}}</p>
+    <p>Owner: {{owner}}</p>
+  
+    <hr />
+    {{!-- {{/each}} --}}
+</div>
+{{else}}
+  <p>Still no logged in user, sorry!</p>
+{{/if}}

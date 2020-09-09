@@ -1,0 +1,16 @@
+<h2>All the Events</h2>
+<a href="/create-events">Add a new Event</a> <br />
+
+<div>
+    {{#each foundEvents}}
+    <p>Name of the Event: {{ name }}</p>
+    <p>Name of the owner: {{ owner.username }}</p>
+    <a href="/events/{{ _id }}">Get more information</a>
+    <hr />
+    {{!-- <a href="/musicEvents/{{_id}}/edit"> Edit </a>
+    <form action="/musicEvents/{{_id}}/delete" method="POST">
+        <button type="submit">Delete</button>
+    </form> --}}
+    
+    {{/each}}
+</div>

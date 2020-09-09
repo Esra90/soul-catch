@@ -1,0 +1,18 @@
+<h1>List of the all events</h1>
+
+    <h3>{{name}}'s Info</h3>
+    <hr />
+    <p>Name of the Event: {{name}}</p>
+    <p>Description: {{description}}</p>
+    <p>Location: {{location}}</p>
+    <p>Datum: {{datum}}</p>
+    <p>Genre: {{genre}}</p>
+    <p>Owner: {{owner}}</p>
+    <a href="/events/{{_id}}/edit"> Edit </a>
+    <form action="/events/{{_id}}/delete" method="POST">
+        <button type="submit">Delete</button>
+    </form>
+    
+  
+
+

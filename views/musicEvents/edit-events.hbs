@@ -1,0 +1,58 @@
+ <nav>
+        <ul>
+          <li>
+            <a href="/signup">Signup</a> <span> | </span>
+            <a href="/login">Login</a>
+            <a href="/userProfile">User Profile</a>
+            <a href="/create-events">Create Event</a>
+            <a href="/logout">Logout</a>
+            <a href="/events">Events</a>
+          </li>
+        </ul>
+  </nav>
+
+<div id="form">
+  <h2>Edit the event</h2>
+  <form action="/events/{{_id}}" method="POST">
+    <label for="input-eventName">Event Name:</label>
+    <input type="text" name="name" value="{{name}}" id="input-eventName"  placeholder="Event Name" />
+    <hr />
+
+    <label for="input-description">Description</label>
+    <textarea name="description"  value="{{description}}" rows="10" cols="30" id="input-description"  placeholder="Description"></textarea>
+   
+
+    <label for="input-location">Location</label>
+    <input type="text" name="location" value="{{location}}" id="input-location" placeholder="Location" />
+    
+
+    <label for="eventDate">Event date:</label>
+    <input type="date" id="input-eventDate" name="datum"
+       value="{{datum}}"
+       min="2020-09-04" max="2021-12-31">
+   
+
+    <label for="genre-input">Choose your genre</label>
+    <select name = "genre"  value="{{genre}}" id="genre-input" multiple size = 11>   
+        <option value = "blues">Blues</option> 
+        <option value = "classical">Classical</option> 
+        <option value = "country">Country</option> 
+        <option value = "electronic">Electronic</option> 
+        <option value = "folk">Folk</option> 
+        <option value = "jazz">Jazz</option> 
+        <option value = "latin">Latin</option> 
+        <option value = "pop/Rock">Pop/Rock</option> 
+        <option value = "r&b">R&B</option> 
+        <option value = "rap">Rap</option> 
+        <option value = "reggae">Reggae</option> 
+    </select>
+    
+    <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
+
+    {{!-- <label for="image-input">Image:</label>
+    <input type="file" name="eventPic" id="image-input" class="form-control-file" /> --}}
+    {{!-- <input type="text" name="existingImage" hidden id="" value="{{eventPic}}"> --}}
+
+    <button type="submit">Create event</button>
+  </form>
+</div>
