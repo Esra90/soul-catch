@@ -1,0 +1,72 @@
+ <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" id="nav-button" href="/events">SoulCatcher</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger"  id="nav-button" href="/userProfile">User Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" id="nav-button" href="/signup">Signup</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" id="nav-button" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger"  id="nav-button" href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<div id="form">
+  <h2>Edit <br />>event</h2>
+   <div class="form-group">
+      <form action="/events/{{_id}}" method="POST">
+        <label for="input-eventName">Event Name:</label>
+        <input type="text" name="name" value="{{name}}" class="form-control"  placeholder="Event Name" />
+        <hr />
+
+        <label for="input-description">Description</label>
+        <textarea name="description"  value="{{description}}" rows="10" cols="30" class="form-control"  placeholder="Description"></textarea>
+      
+
+        <label for="input-location">Location</label>
+        <input type="text" name="location" value="{{location}}" class="form-control" placeholder="Location" />
+        
+
+        <label for="eventDate">Event date:</label>
+        <input type="date" class="form-control" name="datum" class="form-control"
+          value="{{datum}}"
+          min="2020-09-04" max="2021-12-31">
+      
+
+        <label for="genre-input">Choose your genre</label>
+        <select name = "genre"  value="{{genre}}" class="form-control" multiple size = 11>   
+            <option value = "blues">Blues</option> 
+            <option value = "classical">Classical</option> 
+            <option value = "country">Country</option> 
+            <option value = "electronic">Electronic</option> 
+            <option value = "folk">Folk</option> 
+            <option value = "jazz">Jazz</option> 
+            <option value = "latin">Latin</option> 
+            <option value = "pop/Rock">Pop/Rock</option> 
+            <option value = "r&b">R&B</option> 
+            <option value = "rap">Rap</option> 
+            <option value = "reggae">Reggae</option> 
+        </select>
+        
+        <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
+
+        {{!-- <label for="image-input">Image:</label>
+        <input type="file" name="eventPic" id="image-input" class="form-control-file" /> --}}
+        {{!-- <input type="text" name="existingImage" hidden id="" value="{{eventPic}}"> --}}
+
+        <button type="submit">Create event</button>
+      </form>
+    </div>  
+</div>
