@@ -1,16 +1,49 @@
-<h2>All the Events</h2>
-<a href="/create-events">Add a new Event</a> <br />
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" id="nav-button" href="/events">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger"  id="nav-button" href="/userProfile">User Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" id="nav-button" href="/signup">Signup</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" id="nav-button" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger"  id="nav-button" href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-<div>
-    {{#each foundEvents}}
-    <p>Name of the Event: {{ name }}</p>
-    <p>Name of the owner: {{ owner.username }}</p>
-    <a href="/events/{{ _id }}">Get more information</a>
-    <hr />
-    {{!-- <a href="/musicEvents/{{_id}}/edit"> Edit </a>
-    <form action="/musicEvents/{{_id}}/delete" method="POST">
-        <button type="submit">Delete</button>
-    </form> --}}
-    
-    {{/each}}
+
+
+ <div class="events-container"/>   
+
+    <div class="events-header">
+        <h1>All the Events</h1>   
+    </div>
+
+    <div class="events-individual">
+        {{#each foundEvents}}
+        <p>The Event: {{ name }}</p>
+        <p>The owner: {{ owner.username }}</p>
+        <a  class="btn btn-outline-dark" href="/events/{{ _id }}">Get more information</a>
+        <hr  style="background-color:#1EC9D7; width: 1400px;"/>
+        {{!-- <a href="/musicEvents/{{_id}}/edit"> Edit </a>
+        <form action="/musicEvents/{{_id}}/delete" method="POST">
+            <button type="submit">Delete</button>
+        </form> --}}
+        
+        {{/each}}
+    </div>
+
+    <a href="/create-events" class="btn btn-outline-dark" id="button-bottom">Add a new Event</a> <br />
 </div>

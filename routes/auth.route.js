@@ -113,32 +113,18 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
   });
 
-
-  // GET - User profile
-
-  // router.get('/userProfile', (req, res) => {
   
-  //   res.render('userProfile');
-  // })
-
   router.get('/userProfile',  (req, res) => {
-    if (!req.session.currentUser) {
+    if (!req.user) {
       res.redirect('/login'); // not logged-in
       return;
     }
   
   Event.find()
+  .where("owner").equals(req.user._id)
   .then ((allEvents) => {
-    // console.log(allReviews)
-    const newArr = []
-    
-    allEvents.forEach(elem => {
-      if(elem.user && elem.user[0] == req.session.currentUser["_id"]){
-       newArr.push(elem)
-      } 
-    })
-     console.log(newArr)
-     res.render('userProfile', {userInSession: req.session.currentUser, review: newArr})
+
+     res.render('userProfile', {userInSession: req.user, foundEvents: allEvents})
   }
   )
   .catch(
