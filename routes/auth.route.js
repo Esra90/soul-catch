@@ -8,8 +8,8 @@ const saltRounds = 10;
 const passport = require('passport');
 const Event = require('../models/Event.model');
 
-const multer = require('multer');
-const upload = multer({ dest: './public/uploads' });
+// const multer = require('multer');
+// const upload = multer({ dest: './public/uploads' });
 
 const routeGuard = require('../configs/route-guard.config');
 
@@ -21,7 +21,7 @@ router.get('/signup', (_, res) => {
 
 
 //POST - Create an user 
-router.post('/signup', upload.single('profilePicture'), (req, res, next) => {
+router.post('/signup', (req, res, next) => {
     // console.log('The form data: ', req.body);
      const { username, email, password, genre} = req.body;
      console.log(req.body);
@@ -49,7 +49,6 @@ router.post('/signup', upload.single('profilePicture'), (req, res, next) => {
              username,
              email,
              genre,
-             profilePicture: req.file.filename,
              passwordHash : hashedPassword
          });
         //  console.log(`Password hash: ${hashedPassword}`);
@@ -119,17 +118,24 @@ router.post('/login', (req, res, next) => {
       res.redirect('/login'); // not logged-in
       return;
     }
-  
-  Event.find()
-  .where("owner").equals(req.user._id)
-  .then ((allEvents) => {
+    const { id } = req.user;
 
-     res.render('userProfile', {userInSession: req.user, foundEvents: allEvents})
-  }
-  )
-  .catch(
-    error => console.log(`Error while getting a event for edit: ${error}`)
-  )
+    User.findById(id)
+    .populate('subscribedEvents')
+    .exec((err, user) => {
+      const { subscribedEvents } = user;
+      Event.find()
+      .where("owner").equals(req.user._id)
+      .populate('owner')
+      .exec((err, ownedEvents) => {
+        
+        const allEvents = subscribedEvents.concat(ownedEvents);
+        console.log(allEvents);
+        console.log(subscribedEvents);
+        res.render('userProfile', {userInSession: user, foundEvents: allEvents})
+      }
+      )
+   })
   });
 
 

@@ -11,7 +11,7 @@ const path         = require('path');
 const Handlebars = require('handlebars')
 const expressHandlebars = require('express-handlebars');
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
-
+const { ifEquals  } = require('./configs/handlebars.config');
 
 
 // for passport 

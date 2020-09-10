@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" id="nav-button" href="/events">Home</a>
+      <a class="navbar-brand js-scroll-trigger" id="nav-button" href="/events">SoulCatcher</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -26,7 +26,7 @@
 <div class="form">
   <h2>Signup</h2>
   <div class="form-group">
-      <form action="/signup" method="POST" enctype="multipart/form-data">
+      <form action="/signup" method="POST">
         <label for="input-username">Username</label>
         <input type="text" name="username" class="form-control"  placeholder="Your username" />
         
@@ -39,9 +39,9 @@
         <input type="password" name="password" class="form-control" placeholder="********" />
       
 
-        <label for="image-input">Image:</label>
+        {{!-- <label for="image-input">Image:</label>
         <input type="file" name="profilePicture"   class="form-control" class="form-control-file" />
-        <input type="text" name="existingImage" hidden id="" value="{{profilePicture}}">
+        <input type="text" name="existingImage" hidden id="" value="{{profilePicture}}"> --}}
       
         
         <label for="genre-input">Choose your genre</label>

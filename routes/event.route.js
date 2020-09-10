@@ -53,9 +53,11 @@ router.get("/events/:id", (req, res) => {
   console.log(req.params);
 
   Event.findById(id)
-    .then((foundEvents) => {
-      console.log(foundEvents);
-      res.render("musicEvents/events-details", foundEvents);
+    .then((event) => {
+
+      const eventIsOwnedByUser = req.user._id.toString() === event.owner
+
+      res.render("musicEvents/events-details", {event, eventIsOwnedByUser } );
     })
     // Something for next goes here
     .catch((err) => console.log(`Error when try to get more information about the events: ${err}`));
@@ -95,6 +97,23 @@ router.post("/events/:id/delete", (req, res, next) => {
       console.log(`Error when deleting: ${err}`);
     });
 });
+
+
+
+
+// POST route - to join
+router.post("/events/:id/join", (req, res, next) => {
+  const { id } = req.params;
+
+  Event.findById(id).then((event) => {
+    console.log(event);
+    User.findByIdAndUpdate(req.user._id, {$push: {"subscribedEvents": event }}, {safe: true, upsert: true}, (err, user) => 
+    {console.log(user);
+      res.redirect('/userProfile')})
+  })
+  
+});
+
 
 ///////////////////////////////////////////////////////
 
